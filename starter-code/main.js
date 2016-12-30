@@ -6,8 +6,14 @@ var cardTwo = "queen";
 var cardThree = "king";
 var cardFour = "king";
 
-//comparing two queen variables to check for equality = true
-cardOne == cardTwo
-
 // comparing a queen variable with a king variable = false
-cardOne == cardFour
+if (cardTwo !== cardFour) {
+ alert('Sorry, try again.');
+ //comparing two queen variables to check for equality = true
+} else if (cardTwo  === cardOne) {
+ alert('You found a match!');
+} else if (cardThree === cardFour) {
+ alert('You found a match!');
+} else {
+    alert ('The game is over');
+}
