@@ -5,6 +5,9 @@ var cardOne = "queen";
 var cardTwo = "queen";
 var cardThree = "king";
 var cardFour = "king";
+var cards =["queen", "queen", "king", "king"];
+
+/*
 
 // comparing a queen variable with a king variable = false
 if (cardTwo !== cardFour) {
@@ -17,3 +20,25 @@ if (cardTwo !== cardFour) {
 } else {
     alert ('The game is over');
 }
+
+*/
+
+
+//Create the HTML for the cards using JavaScript asignment 10
+var gameBoard = document.getElementById('game-board');
+
+gameBoard.addEventListener('click', createCards);
+
+function createCards() {
+    var card;
+
+    for (var i = 1; i <= 4; i++) {
+
+        //create a new card each loop iteration 1-4
+        card = document.createElement('div');
+        card.classList.add('card');
+        gameBoard.appendChild(card);
+
+    }
+}
+createCards(1);
