@@ -1,44 +1,52 @@
 console.log("JS file is connected to HTML! Woo!")
 
-// Created 4 cards with 4 string values
-var cardOne = "queen";
-var cardTwo = "queen";
-var cardThree = "king";
-var cardFour = "king";
+// 4 cards with 4 string values
 var cards =["queen", "queen", "king", "king"];
-
-/*
-
-// comparing a queen variable with a king variable = false
-if (cardTwo !== cardFour) {
- alert('Sorry, try again.');
- //comparing two queen variables to check for equality = true
-} else if (cardTwo  === cardOne) {
- alert('You found a match!');
-} else if (cardThree === cardFour) {
- alert('You found a match!');
-} else {
-    alert ('The game is over');
-}
-
-*/
+var cardsInPlay = [];
 
 
-//Create the HTML for the cards using JavaScript asignment 10
+
+
+//Create the HTML for the cards using JavaScript
 var gameBoard = document.getElementById('game-board');
 
-gameBoard.addEventListener('click', createCards);
+gameBoard.addEventListener('click', createBoard);
 
-function createCards() {
-    var card;
+function createBoard () {
+    var newCard;
 
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 0; i < cards.length; i++) {
 
         //create a new card each loop iteration 1-4
-        card = document.createElement('div');
-        card.classList.add('card');
-        gameBoard.appendChild(card);
+        newCard = document.createElement('div');
+        newCard.classList.add('card');
+        newCard.setAttribute('data-card', cards[i]);
+        newCard.addEventListener('click', isTwoCards);
+        gameBoard.appendChild(newCard);
 
     }
-}
-createCards(1);
+};
+
+function isMatch () {
+    if (cardsInPlay[0] === cardsInPlay[1]) {
+        alert("You found a match!");
+    } else {
+        alert("Sorry, try again.");
+    }
+};
+
+function isTwoCards () {
+    cardsInPlay.push(this.getAttribute('data-card'));
+    if (cardsInPlay.length === 2) {
+        isMatch(cardsInPlay);
+        cardsInPlay = [];
+    }
+
+    console.log(this.getAttribute('data-card'));
+    if (this.getAttribute('data-card') === 'king') {
+        this.innerHTML = '<img src="/Users/jana/fundamentals/wdi-fundamentals-memorygame/starter-code/king.png" width="150px" alt="King of Spades">';
+        } else { this.innerHTML = '<img src="/Users/jana/fundamentals/wdi-fundamentals-memorygame/starter-code/queen.png" width="150px" alt="Queen of Clubs">';
+    }
+};
+
+createBoard(1);

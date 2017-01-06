@@ -69,6 +69,11 @@ p {
     margin: 8%;
 }
 
+img {
+    width: 170px;
+    height: 220px;
+}
+
 .name {
     color: #ff0000;
 }
